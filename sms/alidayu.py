@@ -20,9 +20,7 @@ def send_by_alidayu(mobile, msg):
 	request.set_protocol_type('https') # https | http
 	request.set_version('2017-05-25')
 	request.set_action_name('SendSms')
-
 	request.add_query_param('RegionId', "cn-hangzhou")
-
 	request.add_query_param('PhoneNumbers', mobile)
 	request.add_query_param('SignName', signname)
 	request.add_query_param('TemplateCode', templatecode)
