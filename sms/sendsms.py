@@ -19,13 +19,19 @@ nameko_config = {
 dispatcher = event_dispatcher(nameko_config)
 
 
-if __name__ == '__main__':
-	import sys
-	mobile = sys.argv[1]
-	msg = sys.argv[2]
+def send_check_code(mobile, content):
 	info = {
 		'mobile': mobile,
-		'msg': msg,
+		'content': content,
 	}
 	info = json.dumps(info)
 	dispatcher('sms', 'checkcode', info)
+	return
+
+
+if __name__ == '__main__':
+	import sys
+	mobile = sys.argv[1]
+	content = sys.argv[2]
+	send_check_code(mobile, content)
+
