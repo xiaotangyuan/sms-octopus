@@ -1,11 +1,13 @@
+import os
+import json
 from nameko.standalone.events import event_dispatcher
 
 
 rabbitinfo = {
-	'RABBIT_USER': 'guest',
-	'RABBIT_PASSWORD': 'guest',
-	'RABBIT_HOST': '192.168.5.105',
-	'RABBIT_PORT': '5672',
+	'RABBIT_USER': os.environ['RABBIT_USER'],
+	'RABBIT_PASSWORD': os.environ['RABBIT_PASSWORD'],
+	'RABBIT_HOST': os.environ['RABBIT_HOST'],
+	'RABBIT_PORT': os.environ['RABBIT_PORT'],
 }
 
 
@@ -18,10 +20,12 @@ dispatcher = event_dispatcher(nameko_config)
 
 
 if __name__ == '__main__':
-	mobile = '137'
-	msg = '123456'
+	import sys
+	mobile = sys.argv[1]
+	msg = sys.argv[2]
 	info = {
 		'mobile': mobile,
 		'msg': msg,
 	}
+	info = json.dumps(info)
 	dispatcher('sms', 'checkcode', info)

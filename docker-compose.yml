@@ -6,6 +6,14 @@ services:
       dockerfile: Dockerfile
     container_name: sms-octopus
     environment:
-      - RABBIT_HOST=192.168.5.105
+      - RABBIT_HOST=xxxxx
+      - RABBIT_USER=xxxx
+      - RABBIT_PASSWORD=xxxx
+      - RABBIT_PORT=xxx
+      - alidayu_accesskeyid=xxx
+      - alidayu_accesssecret=xxx
+      - alidayu_signname=xxx
+      - alidayu_templatecode=xxx
+
     command:
       nameko run --config config.yml sms.service

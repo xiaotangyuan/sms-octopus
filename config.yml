@@ -7,6 +7,10 @@ LOGGING:
     handlers:
         console:
             class: logging.StreamHandler
+        info_file_handler:
+            class: logging.handlers.RotatingFileHandler
+            level: DEBUG
+            filename: nameko.log
     root:
         level: DEBUG
-        handlers: [console]
+        handlers: [console, info_file_handler]
